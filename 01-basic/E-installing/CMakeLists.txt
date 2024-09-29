@@ -1,53 +1,42 @@
+# cmake最低版本
 cmake_minimum_required(VERSION 3.5)
-
+# 工程名
 project(cmake_examples_install)
-
 ############################################################
-# Create a library
+# 创建动态链接库
 ############################################################
-
-#Generate the shared library from the library sources
 add_library(cmake_examples_inst SHARED
     src/Hello.cpp
 )
-
+# 指定工程包含目录
 target_include_directories(cmake_examples_inst
     PUBLIC 
         ${PROJECT_SOURCE_DIR}/include
 )
-
 ############################################################
-# Create an executable
+# 创建可执行文件
 ############################################################
-
-# Add an executable with the above sources
 add_executable(cmake_examples_inst_bin
     src/main.cpp
 )
-
-# link the new hello_library target with the hello_binary target
+# 链接动态库
 target_link_libraries( cmake_examples_inst_bin
     PRIVATE 
         cmake_examples_inst
 )
 
 ############################################################
-# Install
+# 安装
 ############################################################
-
-# Binaries
+# 安装二进制文件到bin目录
 install (TARGETS cmake_examples_inst_bin
     DESTINATION bin)
-
-# Library
-# Note: may not work on windows
+# 安装动态库到lib目录
 install (TARGETS cmake_examples_inst
     LIBRARY DESTINATION lib)
-
-# Header files
+# 安装头文件到include目录
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ 
     DESTINATION include)
-
-# Config
+# 安装配置文件到etc目录
 install (FILES cmake-examples.conf
     DESTINATION etc)

@@ -1,23 +1,16 @@
-# Set the minimum version of CMake that can be used
-# To find the cmake version run
-# $ cmake --version
+# cmake最小版本号
 cmake_minimum_required(VERSION 3.5)
-
-# Set the project name
+# 工程名
 project (hello_headers)
-
-# Create a sources variable with a link to all cpp files to compile
+# 参与编译源文件
 set(SOURCES
     src/Hello.cpp
     src/main.cpp
 )
-
-# Add an executable with the above sources
+# 生成可执行文件　
 add_executable(hello_headers ${SOURCES})
-
-# Set the directories that should be included in the build command for this target
-# when running g++ these will be included as -I/directory/path/
+# 指定工程包含目录
 target_include_directories(hello_headers
     PRIVATE 
-        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/include # 包含目录路径
 )

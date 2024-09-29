@@ -1,10 +1,6 @@
-# Set the minimum version of CMake that can be used
-# To find the cmake version run
-# $ cmake --version
+# cmake最低版本号
 cmake_minimum_required(VERSION 3.5)
-
-# Set the project name
+# 工程名
 project (hello_cmake)
-
-# Add an executable
+# 生成可执行文件
 add_executable(hello_cmake main.cpp)
